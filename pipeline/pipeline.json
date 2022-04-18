@@ -7,7 +7,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Set variable2",
+						"activity": "Lookup1",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@variables('IMGURL')",
+						"value": "@activity('Lookup1')",
 						"type": "Expression"
 					},
 					"activities": [
@@ -33,19 +33,6 @@
 							}
 						}
 					]
-				}
-			},
-			{
-				"name": "Set variable2",
-				"type": "SetVariable",
-				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "IMGURL",
-					"value": {
-						"value": "@array(activity('LoadData').output)",
-						"type": "Expression"
-					}
 				}
 			},
 			{
