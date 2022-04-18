@@ -1,0 +1,17 @@
+{
+	"name": "JsonSink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "JSONSink",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation"
+			}
+		},
+		"schema": {}
+	}
+}
