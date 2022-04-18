@@ -60,7 +60,7 @@
 						}
 					},
 					"dataset": {
-						"referenceName": "JsonSink",
+						"referenceName": "JsonSource",
 						"type": "DatasetReference"
 					}
 				}
