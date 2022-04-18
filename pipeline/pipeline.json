@@ -27,12 +27,14 @@
 						}
 					},
 					"sink": {
-						"type": "JsonSink",
+						"type": "DelimitedTextSink",
 						"storeSettings": {
 							"type": "AzureBlobStorageWriteSettings"
 						},
 						"formatSettings": {
-							"type": "JsonWriteSettings"
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
 						}
 					},
 					"enableStaging": false,
@@ -44,7 +46,7 @@
 									"path": "$['fileName']"
 								},
 								"sink": {
-									"path": "$['fileName']"
+									"ordinal": 1
 								}
 							},
 							{
@@ -52,7 +54,7 @@
 									"path": "$['fileSize']"
 								},
 								"sink": {
-									"path": "$['fileSize']"
+									"ordinal": 2
 								}
 							},
 							{
@@ -60,7 +62,7 @@
 									"path": "$['filePath']"
 								},
 								"sink": {
-									"path": "$['filePath']"
+									"ordinal": 3
 								}
 							}
 						]
@@ -74,45 +76,10 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "JsonInProcess",
+						"referenceName": "CSVSink",
 						"type": "DatasetReference"
 					}
 				]
-			},
-			{
-				"name": "ForEach1",
-				"type": "ForEach",
-				"dependsOn": [
-					{
-						"activity": "LoadData",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"items": {
-						"value": "@JSON(activity('LoadData').output)",
-						"type": "Expression"
-					},
-					"isSequential": false,
-					"activities": [
-						{
-							"name": "Set variable1",
-							"type": "SetVariable",
-							"dependsOn": [],
-							"userProperties": [],
-							"typeProperties": {
-								"variableName": "IMGURL",
-								"value": {
-									"value": "@item().value",
-									"type": "Expression"
-								}
-							}
-						}
-					]
-				}
 			}
 		],
 		"parameters": {
