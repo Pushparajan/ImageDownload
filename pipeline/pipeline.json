@@ -3,8 +3,54 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "LoadData",
-				"type": "Copy",
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Set variable2",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@variables('IMGURL')",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Set variable1",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "IMGURL",
+								"value": [
+									"@item().filename"
+								]
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Set variable2",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "IMGURL",
+					"value": {
+						"value": "@array(activity('LoadData').output)",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Lookup1",
+				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
@@ -26,88 +72,10 @@
 							"type": "JsonReadSettings"
 						}
 					},
-					"sink": {
-						"type": "DelimitedTextSink",
-						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
-						}
-					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"source": {
-									"path": "$['fileName']"
-								},
-								"sink": {
-									"ordinal": 1
-								}
-							},
-							{
-								"source": {
-									"path": "$['fileSize']"
-								},
-								"sink": {
-									"ordinal": 2
-								}
-							},
-							{
-								"source": {
-									"path": "$['filePath']"
-								},
-								"sink": {
-									"ordinal": 3
-								}
-							}
-						]
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "JsonSource",
+					"dataset": {
+						"referenceName": "JsonSink",
 						"type": "DatasetReference"
 					}
-				],
-				"outputs": [
-					{
-						"referenceName": "CSVSink",
-						"type": "DatasetReference"
-					}
-				]
-			},
-			{
-				"name": "ForEach1",
-				"type": "ForEach",
-				"dependsOn": [
-					{
-						"activity": "LoadData",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"activities": [
-						{
-							"name": "Set variable1",
-							"type": "SetVariable",
-							"dependsOn": [],
-							"userProperties": [],
-							"typeProperties": {
-								"variableName": "IMGURL",
-								"value": [
-									"@item().filename"
-								]
-							}
-						}
-					]
 				}
 			}
 		],
