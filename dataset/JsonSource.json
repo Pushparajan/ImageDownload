@@ -1,0 +1,32 @@
+{
+	"name": "JsonSource",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "jsondata.json",
+				"container": "jsoninput"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"fileName": {
+					"type": "string"
+				},
+				"fileSize": {
+					"type": "string"
+				},
+				"filePath": {
+					"type": "string"
+				}
+			}
+		}
+	}
+}
