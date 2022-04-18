@@ -93,7 +93,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('LoadData').output",
+						"value": "@array(activity('LoadData').output)",
 						"type": "Expression"
 					},
 					"isSequential": true,
