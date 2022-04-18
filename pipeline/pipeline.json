@@ -42,15 +42,24 @@
 							{
 								"source": {
 									"path": "$['fileName']"
+								},
+								"sink": {
+									"path": "$['fileName']"
 								}
 							},
 							{
 								"source": {
 									"path": "$['fileSize']"
+								},
+								"sink": {
+									"path": "$['fileSize']"
 								}
 							},
 							{
 								"source": {
+									"path": "$['filePath']"
+								},
+								"sink": {
 									"path": "$['filePath']"
 								}
 							}
