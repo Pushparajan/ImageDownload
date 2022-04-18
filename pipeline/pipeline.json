@@ -106,7 +106,7 @@
 							"typeProperties": {
 								"variableName": "IMGURL",
 								"value": {
-									"value": "@item()",
+									"value": "@item().value",
 									"type": "Expression"
 								}
 							}
