@@ -117,7 +117,7 @@
 		],
 		"variables": {
 			"IMGURL": {
-				"type": "String"
+				"type": "Array"
 			}
 		},
 		"annotations": []
