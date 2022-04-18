@@ -1,0 +1,9 @@
+{
+	"name": "ImageDownloadFactory",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "c9e70128-4a3f-4ffb-a500-884f46d83db9",
+		"tenantId": "0e75b8b9-a321-40dc-9912-9538da3cdade"
+	}
+}
