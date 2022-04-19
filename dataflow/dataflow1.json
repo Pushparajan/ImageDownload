@@ -23,6 +23,9 @@
 			],
 			"transformations": [],
 			"scriptLines": [
+				"parameters{",
+				"     records as string[]",
+				"}",
 				"source(output(",
 				"          fileName as string,",
 				"          fileSize as string,",
