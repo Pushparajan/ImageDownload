@@ -101,7 +101,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Data flow1').output",
+						"value": "@array(activity('Data flow1').output)",
 						"type": "Expression"
 					},
 					"activities": [
